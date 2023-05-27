@@ -1,22 +1,31 @@
 import { useDispatch } from 'react-redux'
 import { deleteFromOrder } from '../../redux/slice'
 import Counter from '../Counter/Counter'
-import { AiFillDelete } from 'react-icons/ai'
+
+import {
+  DelButton,
+  Icon,
+  InfoBox,
+  ItemContainer,
+  Name,
+  Price,
+  ProductPhoto,
+} from './OrderItem.styled'
 
 export default function OrderItem({ price, photoUrl, quantity, name, id }) {
   const dispatch = useDispatch()
 
   return (
-    <section>
-      <img src={photoUrl} alt={name} />
-      <div>
-        <h2>{name}</h2>
-        <p>Price: {price}</p>
+    <ItemContainer>
+      <ProductPhoto src={photoUrl} alt={name} />
+      <InfoBox>
+        <Name>{name}</Name>
+        <Price>Price: {price}</Price>
         <Counter quantity={quantity} productId={id} />
-      </div>
-      <button onClick={() => dispatch(deleteFromOrder(id))}>
-        <AiFillDelete />
-      </button>
-    </section>
+      </InfoBox>
+      <DelButton onClick={() => dispatch(deleteFromOrder(id))}>
+        <Icon />
+      </DelButton>
+    </ItemContainer>
   )
 }

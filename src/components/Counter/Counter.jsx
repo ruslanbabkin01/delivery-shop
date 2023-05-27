@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateQuantity } from '../../redux/slice'
+import { Button, Count, CounterContainer } from './Counter.styled'
 
 export default function Counter({ quantity, productId }) {
   const [count, setCount] = useState(1)
@@ -21,10 +22,10 @@ export default function Counter({ quantity, productId }) {
   }
 
   return (
-    <div>
-      <button onClick={handleDecrement}>-</button>
-      <span>{count}</span>
-      <button onClick={handleIncrement}>+</button>
-    </div>
+    <CounterContainer>
+      <Button onClick={handleDecrement}>-</Button>
+      <Count>{count}</Count>
+      <Button onClick={handleIncrement}>+</Button>
+    </CounterContainer>
   )
 }

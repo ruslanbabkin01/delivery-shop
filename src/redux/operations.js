@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const VITE_BASE_URL = 'https://delivery-shop-ii9s.onrender.com/api'
 // const VITE_BASE_URL = 'http://localhost:5555/api'
@@ -53,6 +54,7 @@ export const createOrder = createAsyncThunk(
 
     try {
       const { data } = await deliveryShopAPI.post(`/orders`, orderData)
+      toast.success('Your order sent')
       return data
     } catch (e) {
       return thunkApi.rejectWithValue(e.message)

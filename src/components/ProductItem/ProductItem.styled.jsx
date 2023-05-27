@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const ProductItemBox = styled.li`
-  width: 300px;
-  height: 350px;
+  width: 250px;
+  height: 300px;
   border: 1px solid ${p => p.theme.colors.black};
   background-color: ${p => p.theme.colors.white};
   overflow: hidden;
@@ -12,7 +12,7 @@ export const ProductItemBox = styled.li`
 
 export const ProductPhoto = styled.img`
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
 `
 export const DescrBox = styled.div`
@@ -37,8 +37,8 @@ export const AddButton = styled.button`
   border: none;
   border-radius: 10px;
 
-  /* background-color: ${p =>
-    p.isFollowing ? p.theme.colors.green : p.theme.colors.gray}; */
+  background-color: ${p =>
+    p.isInOrder ? p.theme.colors.green : p.theme.colors.gray};
 
   :hover {
     background-color: ${p => p.theme.colors.green};

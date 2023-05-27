@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectTotalPrice, selectUserData } from '../../redux/selectors'
 import { createOrder } from '../../redux/operations.js'
 import { checkTotalPrice, setUserData } from '../../redux/slice.js'
+import { Box } from './OrderForm.styled.jsx'
 
 export const OrderForm = () => {
   const dispatch = useDispatch()
@@ -50,7 +51,7 @@ export const OrderForm = () => {
   }
 
   return (
-    <>
+    <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         {inputs.map(({ name, label, defaultValue, placeholder }) => (
           <li key={name}>
@@ -72,6 +73,6 @@ export const OrderForm = () => {
           <p> Total Price: {totalPrice.toFixed(2)}</p>
         </div>
       </form>
-    </>
+    </Box>
   )
 }

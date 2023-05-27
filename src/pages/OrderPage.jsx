@@ -4,10 +4,12 @@ import { OrderList } from '../components/OrderList/OrderList'
 
 export default function OrderPage() {
   return (
-    <Container>
-      <OrderForm />
+    <main>
+      <Container>
+        <OrderForm />
 
-      <OrderList />
-    </Container>
+        <OrderList />
+      </Container>
+    </main>
   )
 }

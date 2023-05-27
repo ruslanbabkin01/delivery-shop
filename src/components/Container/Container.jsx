@@ -5,8 +5,8 @@ const Wrapper = styled.div`
   display: flex;
   max-width: 1280px;
   padding: 0 16px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `
 
 export default function Container({ children }) {

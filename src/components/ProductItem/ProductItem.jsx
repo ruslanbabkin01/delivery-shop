@@ -29,10 +29,10 @@ export default function ProductItem({
       <ProductPhoto src={photoUrl} alt='Product' />
       <DescrBox>
         <Name>{name}</Name>
-        <Price>{price}</Price>
+        <Price>{price}$</Price>
       </DescrBox>
 
-      <AddButton onClick={() => handleClick(_id)}>
+      <AddButton onClick={() => handleClick(_id)} isInOrder={isInOrder}>
         {isInOrder ? ' remove from cart' : 'add to Cart'}
       </AddButton>
     </ProductItemBox>
