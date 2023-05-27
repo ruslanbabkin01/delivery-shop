@@ -5,11 +5,9 @@ Welcome to Delivery Shop
 
 Built with Vite, React, and Redux.
 
-<img width="550" alt="image" src="https://github.com/kyzym/DeliveryAppFront/assets/102521716/16a6bd4d-3a19-4538-ae06-51b2ef0a0439">
-
 ## 🌐 Live Link
 
-Check out the live version here: [Delivery-App](https://delivery-app-front-xi.vercel.app/#/)
+Check out the live version here: [Delivery-App](https://delivery-shop-front.onrender.com/)
 
 ## 🛠️ Technologies
 
@@ -34,7 +32,7 @@ npm install
 ```
 To start the application:
 ```bash
-npm start
+npm run dev
 ```
 Now, open [http://localhost:5137](http://localhost:5137) to view it in the browser.
 
