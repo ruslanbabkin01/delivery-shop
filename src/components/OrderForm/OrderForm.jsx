@@ -5,7 +5,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectTotalPrice, selectUserData } from '../../redux/selectors'
 import { createOrder } from '../../redux/operations.js'
 import { checkTotalPrice, setUserData } from '../../redux/slice.js'
-import { Box } from './OrderForm.styled.jsx'
+import {
+  Box,
+  BtnBox,
+  ErrorMessage,
+  InputBox,
+  InputItem,
+  InputList,
+  Label,
+  Submit,
+  TotalPrice,
+} from './OrderForm.styled.jsx'
 
 export const OrderForm = () => {
   const dispatch = useDispatch()
@@ -53,25 +63,28 @@ export const OrderForm = () => {
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {inputs.map(({ name, label, defaultValue, placeholder }) => (
-          <li key={name}>
-            <label>
-              {label}
-              <p>{errors[name]?.message}</p>
-              <input
-                required
-                placeholder={placeholder}
-                defaultValue={defaultValue}
-                {...register(name)}
-              />
-            </label>
-          </li>
-        ))}
+        <InputList>
+          {inputs.map(({ name, label, defaultValue, placeholder }) => (
+            <InputItem key={name}>
+              <Label>
+                {label}
+                <ErrorMessage>{errors[name]?.message}</ErrorMessage>
+                <InputBox
+                  required
+                  placeholder={placeholder}
+                  defaultValue={defaultValue}
+                  Input
+                  {...register(name)}
+                />
+              </Label>
+            </InputItem>
+          ))}
+        </InputList>
 
-        <div>
-          <button type='submit'>Create order</button>
-          <p> Total Price: {totalPrice.toFixed(2)}</p>
-        </div>
+        <BtnBox>
+          <Submit type='submit'>Create order</Submit>
+          <TotalPrice>Total Price: {totalPrice.toFixed(2)}</TotalPrice>
+        </BtnBox>
       </form>
     </Box>
   )

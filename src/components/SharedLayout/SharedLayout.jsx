@@ -1,6 +1,21 @@
+import { useSelector } from 'react-redux'
 import { Container, Header, StyledLink } from './SharedLayout.styled'
+import { selectError, selectIsLoading } from '../../redux/selectors'
+import { Suspense, useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import Loader from '../Loader/Loader'
 
 export default function SharedLayout() {
+  const isLoading = useSelector(selectIsLoading)
+  const error = useSelector(selectError)
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error)
+    }
+  }, [error])
+
   return (
     <Container>
       <Header>
@@ -10,6 +25,13 @@ export default function SharedLayout() {
           <StyledLink to='/history'>History orders</StyledLink>
         </nav>
       </Header>
+
+      <main>
+        {isLoading && <Loader />}
+        <Suspense>
+          <Outlet />
+        </Suspense>
+      </main>
     </Container>
   )
 }
