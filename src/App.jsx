@@ -1,33 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import SharedLayout from './components/SharedLayout/SharedLayout'
+// import { lazy } from 'react'
+import ShopsPage from './pages/ShopsPage'
+import HistoryPage from './pages/HistoryPage'
+import OrderPage from './pages/OrderPage'
+
+// const ShopsPage = lazy(() => import('./pages/ShopsPage'))
+// const OrderPage = lazy(() => import('./pages/OrderPage'))
+// const HistoryPage = lazy(() => import('./pages/HistoryPage'))
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SharedLayout />
+      <Routes>
+        <Route path='/' index element={<ShopsPage />} />
+        <Route path='/order' element={<OrderPage />} />
+        <Route path='/history' element={<HistoryPage />} />
+        <Route path='*' element={<Navigate to='/' />} />
+      </Routes>
     </>
   )
 }
