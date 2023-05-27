@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-// const VITE_BASE_URL = 'https://delivery-shop-ii9s.onrender.com/api'
-const VITE_BASE_URL = 'http://localhost:5555/api'
+const VITE_BASE_URL = 'https://delivery-shop-ii9s.onrender.com/api'
+// const VITE_BASE_URL = 'http://localhost:5555/api'
 
 export const deliveryShopAPI = axios.create({
   baseURL: VITE_BASE_URL,
@@ -44,15 +44,13 @@ export const createOrder = createAsyncThunk(
       shop: owner,
     }))
 
-    console.log(productsOrder)
-
     const orderData = {
       totalPrice,
       ...userData,
       shop: productsOrder[0].shop,
       products: productsOrder,
     }
-    console.log(orderData)
+
     try {
       const { data } = await deliveryShopAPI.post(`/orders`, orderData)
       return data
