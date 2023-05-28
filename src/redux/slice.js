@@ -28,29 +28,21 @@ export const generalSlice = createSlice({
     },
     setInOrder(state, action) {
       const productId = action.payload
+
       const searchedProduct = state.activeProducts.find(
         product => product._id === productId
       )
 
-      // const searchedShop = state.shops.find(({ _id }) => _id === shop)
-      // const searchedProduct = searchedShop?.products?.find(
-      //   ({ _id }) => _id === productId
-      // )
-
-      if (searchedProduct) {
-        if (
-          state.order.length === 0 ||
-          state.activeShop === searchedProduct.owner
-        ) {
-          searchedProduct.quantity = 1
-          state.totalPrice += searchedProduct.quantity * searchedProduct.price
-          state.order.push(searchedProduct)
-          toast.success(`${searchedProduct.name} added from cart`)
-        } else {
-          toast.info('you can only add products from one shop to your order')
-        }
+      if (
+        state.order.length === 0 ||
+        state.order[0].owner === state.activeShop
+      ) {
+        searchedProduct.quantity = 1
+        state.totalPrice += searchedProduct.quantity * searchedProduct.price
+        state.order.push(searchedProduct)
+        toast.success(`${searchedProduct.name} added from cart`)
       } else {
-        toast.error('Product not found')
+        toast.info('you can only add products from one shop to your order')
       }
     },
 
