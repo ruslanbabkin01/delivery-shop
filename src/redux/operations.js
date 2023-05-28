@@ -42,13 +42,13 @@ export const createOrder = createAsyncThunk(
     const productsOrder = order.map(({ _id, owner, quantity }) => ({
       productId: _id,
       quantity,
-      shop: owner,
+      owner,
     }))
 
     const orderData = {
       totalPrice,
       ...userData,
-      shop: productsOrder[0].shop,
+      shop: productsOrder[0].owner,
       products: productsOrder,
     }
 
@@ -57,6 +57,8 @@ export const createOrder = createAsyncThunk(
       toast.success('Your order sent')
       return data
     } catch (e) {
+      console.log(e.message)
+      // toast.error(e.message)
       return thunkApi.rejectWithValue(e.message)
     }
   }

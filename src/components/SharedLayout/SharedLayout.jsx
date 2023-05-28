@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import { Container, Header, StyledLink } from './SharedLayout.styled'
-import { selectError, selectIsLoading } from '../../redux/selectors'
 import { Suspense, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+import { selectError, selectIsLoading } from '../../redux/selectors'
 import Loader from '../Loader/Loader'
 
 export default function SharedLayout() {
